@@ -5,13 +5,13 @@
 class News{
 
     constructor(){
-        this.author;
+      /*   this.author;
         this.title;
         this.url;
         this.urlImage;
         this.content;
         this.publishedAt;
-        this.description;
+        this.description; */
     }
 
     setAuthor(author){

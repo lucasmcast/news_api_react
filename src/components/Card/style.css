@@ -6,6 +6,7 @@
     justify-content: space-between;
     display: flex;
     flex-direction: column;
+    background: #FFFFFF;
 }
 
 .card-header {
@@ -53,4 +54,37 @@
 .card-author {
     margin: 10px
 }
+
+.btn-salvar {
+    background:#00C853;
+    border: none;
+    border-radius: 2px;
+    width: 60px;
+    height: 30px;
+    color: #FFFFFF;
+    box-shadow: 0 5px 5px 0 rgba(25,25, 25, 0.8);
+    cursor: pointer;
+}
+  
+.btn-salvar:hover {
+    width: 65px;
+    height: 35px;
+}
+
+.btn-apagar {
+    background:#D50000;
+    border: none;
+    border-radius: 2px;
+    width: 60px;
+    height: 30px;
+    color: #FFFFFF;
+    box-shadow: 0 5px 5px 0 rgba(25,25, 25, 0.8);
+    cursor: pointer;
+  }
+  
+  .btn-apagar:hover {
+    width: 65px;
+    height: 35px;
+  }
+  
   

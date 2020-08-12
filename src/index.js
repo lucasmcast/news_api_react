@@ -1,11 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import FavoritesView from './views/favoritesView';
+import NewsView from './views/newsView';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class Index {
+  constructor(){
+    this.route(window.location.pathname)
+  }
+
+  route(pathname){
+    switch(pathname){
+      case "/favoritos":
+        new FavoritesView()
+        break;
+      case "/home":
+        new NewsView()
+        break;
+      case "/":
+        new NewsView()
+        break;
+    }
+  }
+}
+
+new Index();

@@ -1,5 +1,9 @@
-import { NewsView } from "./newsView.js";
-import { NewsController } from "./newsController.js";
+import NewsController from "../controllers/newsController";
+import News from "../models/newsModel"
+import ReactDOM from 'react-dom';
+import React from 'react';
+import NavBar from '../components/NavBar';
+import Main from '../components/Main'
 
 /**
  * Class does html rendering on the favorites page
@@ -7,19 +11,39 @@ import { NewsController } from "./newsController.js";
  * @since 1.0.0
  * 
  */
-export class FavoritesView extends NewsView{
+class FavoritesView{
 
-    /**
-     * Obtains data from the database and renders cards with past data
-     * @see NewsView.createCards()
-     */
-    async renderView(){
-        const data = await this.controller.getAllNewsDB();
-        this.createCards(data, "Apagar", (news) => {
-            this.clickBotao(news)
-        });
+    constructor(){
+        this.getDataDB();
     }
 
+    getDataDB(){
+        let arrayNews = []
+        let controller = new NewsController();
+        let severalNews = controller.getAllNewsDB();
+        console.log(severalNews)
+        console.log("Pegando do Banco")
+        severalNews.then(function(data){
+          for (let i = 0; i < data.length; i++) {
+            let noticia = new News();
+            noticia.setTitle(data[i].title);
+            noticia.setAuthor(data[i].author);
+            noticia.setContent(data[i].content);
+            noticia.setDescription(data[i].description);
+            noticia.setPublishedAt(data[i].publishedAt);
+            noticia.setUrlImage(data[i].urlToImage);
+            noticia.setUrl(data[i].url);
+            arrayNews.push(noticia)
+          }
+          ReactDOM.render(
+            <React.StrictMode>
+              <NavBar menuItems={["Home", "Favoritos"]} />
+              <Main cardNameButton="Apagar" data={arrayNews}/>
+            </React.StrictMode>,
+            document.getElementById('root')
+          );
+        })
+      }
     /**
      * Perform button action when clicking, in this case, erases data from the database.
      * 
@@ -31,3 +55,5 @@ export class FavoritesView extends NewsView{
     }
 
 }
+
+export default FavoritesView;

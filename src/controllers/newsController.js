@@ -4,7 +4,7 @@ import { NewsDAO } from "../dao/newsDAO.js";
  * @author Lucas Martins de Castro <lucas.martins.c03@gmail.com>
  * @since 1.0.0
  */
-export class NewsController {
+class NewsController {
   constructor() {
     this.newsDao = new NewsDAO();
   }
@@ -80,3 +80,5 @@ export class NewsController {
     this.newsDao.delete(title);
   }
 }
+
+export default NewsController;
