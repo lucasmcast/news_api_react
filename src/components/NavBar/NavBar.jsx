@@ -10,6 +10,9 @@ class NavBar extends Component{
         super(props)
     }
 
+    /**
+     * TODO: Implementar a ação do botão buscar e criar componentes separados para a navbar
+     */
     render(){
         return(
             <header>
@@ -22,6 +25,7 @@ class NavBar extends Component{
                                     <MenuItem key={index} name={item}/>
                                 )
                             })}
+                            <li><input/><button>Buscar</button></li>
                         </ul>
                     </div>
                     <Clock/>

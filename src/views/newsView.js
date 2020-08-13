@@ -12,15 +12,29 @@ import Main from '../components/Main'
  */
 class NewsView {
   
-  constructor(){
+  constructor(routes){ 
+    this.routes = routes
     this.getDataAPI()
   }
 
+  /**Perform button action when clicking, in this case, saves data in the database.
+   * @param {News} news - Class MOdel news
+   */
+  clickButton(news) {
+    let controller = new NewsController()
+    controller.save(news);
+  }
+
+  /**
+   * Get data from API and render ReactDOM
+   */
   getDataAPI() {
     let arrayNews = []
     let controller = new NewsController();
     let severalNews = controller.getTopNewsApi();
-  
+    let clickButton = this.clickButton;
+    let routes = this.routes;
+
     severalNews.then(function(resp){
       let data = resp.articles;
       for (let i = 0; i < data.length; i++) {
@@ -35,29 +49,20 @@ class NewsView {
         arrayNews.push(noticia)
       }
 
-      let props = {
-        isFavorites: false,
-        news : arrayNews
-      }
-
       ReactDOM.render(
         <React.StrictMode>
-          <NavBar menuItems={["Home", "Favoritos"]} />
-          <Main cardNameButton="Salvar" data={props} />
+          <NavBar menuItems={routes} />
+          <Main 
+            cardNameButton="Salvar" 
+            data={arrayNews} 
+            clickButton={clickButton}
+          />
         </React.StrictMode>,
         document.getElementById('root')
       );
   
     })
   }
-
-  /**Perform button action when clicking, in this case, saves data in the database.
-   * @param {News} news - Class MOdel news
-   */
-  clickBotao(news) {
-    this.controller.save(news);
-  }
-
 }
 
 export default NewsView;

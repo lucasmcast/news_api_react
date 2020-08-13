@@ -11,7 +11,7 @@ class Main extends Component{
     render() {
         return(
             <main>
-                <Container cardNameButton={this.props.cardNameButton} data={this.props.data}/>
+                <Container cardNameButton={this.props.cardNameButton} data={this.props.data} clickButton={this.props.clickButton}/>
             </main>
           
         )

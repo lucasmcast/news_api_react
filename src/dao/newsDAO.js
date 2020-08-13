@@ -116,7 +116,7 @@ export class NewsDAO {
         if (cursor) {
           objectStore.delete(cursor["primaryKey"]);
         }
-        alert("Noticia excluida com sucesso");
+        //alert("Noticia excluida com sucesso");
       };
       request.onerror = function (event) {
         console.log("deu erro ao apargar");

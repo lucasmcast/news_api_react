@@ -1,7 +1,7 @@
 .card {
     width: 45%;
     border-radius: 10px;
-    box-shadow: 0 5px 5px 0 rgba(25,25, 25, 0.8);
+    box-shadow: 0 5px 5px 0 rgba(25, 25, 25, 0.8);
     margin-top: 20px;
     justify-content: space-between;
     display: flex;
@@ -20,15 +20,17 @@
 .card-header a {
     text-decoration: none;
 }
-  
+
 .card-header a:hover {
     color: #000000;
     font-size: 25px;
 }
+
 .card-content {
     display: flex;
     padding: 8px;
     text-align: center;
+    margin: 5px;
 }
 
 .card-content p {
@@ -36,9 +38,9 @@
     margin: 5px;
     font: caption;
 }
+
 .card-content img {
     max-width: 50%;
-    max-width: 60%;
 }
 
 .card-footer {
@@ -56,35 +58,42 @@
 }
 
 .btn-salvar {
-    background:#00C853;
+    background: #00C853;
     border: none;
     border-radius: 2px;
     width: 60px;
     height: 30px;
     color: #FFFFFF;
-    box-shadow: 0 5px 5px 0 rgba(25,25, 25, 0.8);
+    box-shadow: 0 5px 5px 0 rgba(25, 25, 25, 0.8);
     cursor: pointer;
 }
-  
+
 .btn-salvar:hover {
     width: 65px;
     height: 35px;
 }
 
 .btn-apagar {
-    background:#D50000;
+    background: #D50000;
     border: none;
     border-radius: 2px;
     width: 60px;
     height: 30px;
     color: #FFFFFF;
-    box-shadow: 0 5px 5px 0 rgba(25,25, 25, 0.8);
+    box-shadow: 0 5px 5px 0 rgba(25, 25, 25, 0.8);
     cursor: pointer;
-  }
-  
-  .btn-apagar:hover {
+}
+
+.btn-apagar:hover {
     width: 65px;
     height: 35px;
-  }
-  
-  
+}
+
+@media (max-width: 720px) {
+    .card {
+        width: 80%;
+    }
+    .card-author {
+        overflow-wrap: anywhere;
+    }
+}

@@ -17,6 +17,7 @@ class Clock extends Component{
     componentWillUnmount(){
         clearInterval(this.timeID);
     }
+    
     tick() {
         this.setState({
           date: new Date()

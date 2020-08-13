@@ -3,6 +3,8 @@ import FavoritesView from './views/favoritesView';
 import NewsView from './views/newsView';
 
 class Index {
+  routes = ["home", "favoritos"]
+
   constructor(){
     this.route(window.location.pathname)
   }
@@ -10,13 +12,13 @@ class Index {
   route(pathname){
     switch(pathname){
       case "/favoritos":
-        new FavoritesView()
+        new FavoritesView(this.routes)
         break;
       case "/home":
-        new NewsView()
+        new NewsView(this.routes)
         break;
       case "/":
-        new NewsView()
+        new NewsView(this.routes)
         break;
     }
   }

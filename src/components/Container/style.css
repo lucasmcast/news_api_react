@@ -4,4 +4,14 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
-  
+
+@media (max-width: 720px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+        max-width: 95%;
+    }
+}

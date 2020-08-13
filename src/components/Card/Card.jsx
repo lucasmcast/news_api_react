@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
 import ButtonCard from './ButtonCard';
-import NewsController from '../../controllers/newsController';
 
 class Card extends Component {
 
@@ -10,12 +9,13 @@ class Card extends Component {
         this.news = this.props.news;
     }
 
-    clickButton(event){
-        console.log(this.props)
-        let controller = new NewsController();
-        controller.save(this.news);
+    /**
+     * Calls the parent element function
+     */
+    clickButton(){  
+        this.props.clickButton(this.props.id, this.news)
     }
-
+    
     render() {
 
         return (
@@ -32,7 +32,10 @@ class Card extends Component {
                 <div className="card-footer">
                     <span className="card-published">{this.news.getPublishedAt()}</span>
                     <span className="card-author">{this.news.getAuthor()}</span>
-                    <ButtonCard nameButton={this.props.cardNameButton} clickButton={this.clickButton.bind(this)}/>
+                    <ButtonCard 
+                        nameButton={this.props.cardNameButton} 
+                        clickButton={this.clickButton.bind(this)}
+                    />
                 </div>
             </div>
         );
