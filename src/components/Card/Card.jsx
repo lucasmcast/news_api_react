@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.css'
 import ButtonCard from './ButtonCard';
+import imageNotFound from './images/not_found.png'
 
 class Card extends Component {
 
@@ -27,7 +28,7 @@ class Card extends Component {
                 </div>
                 <div  className="card-content">
                     <p>{this.news.getDescription()}</p>
-                    <img src={this.news.getUrlImage()}></img>
+                    <img src={ this.news.getUrlImage() ? this.news.getUrlImage(): imageNotFound}></img>
                 </div>
                 <div className="card-footer">
                     <span className="card-published">{this.news.getPublishedAt()}</span>

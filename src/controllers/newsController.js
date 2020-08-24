@@ -13,9 +13,9 @@ class NewsController {
     let i;
     for (i = 0; i < data.length; i++) {
       if (
-        data[i]["gentilico"].toUpperCase() == countryName.toUpperCase() ||
-        data[i]["nome_pais"].toUpperCase() == countryName.toUpperCase() ||
-        data[i]["nome_pais_int"].toUpperCase() == countryName.toUpperCase()
+        data[i]["gentilico"].toUpperCase() === countryName.toUpperCase() ||
+        data[i]["nome_pais"].toUpperCase() === countryName.toUpperCase() ||
+        data[i]["nome_pais_int"].toUpperCase() === countryName.toUpperCase()
       ) {
         return data[i]["sigla"];
       }
@@ -27,21 +27,8 @@ class NewsController {
    * @link <https://newsapi.org>
    * @returns JSON
    */
-  async getTopNewsApi() {
-    var response = await this.newsDao.getTopNewsApi();
-    const data = await response.json();
-    return data;
-  }
-
-  async getCountryQueryNewsApi(country) {
-    var response = await this.newsDao.getCountryQueryNewsApi(country);
-    const data = await response.json();
-    return data;
-  }
-  
-  async getSubjectQueryNewsApi(subject) {
-    var response = await this.newsDao.getSubjectQueryNewsApi(subject);
-    const data = await response.json();
+  getNewsApi(endPoint) {
+    var data = this.newsDao.getDataAPI(endPoint);
     return data;
   }
 

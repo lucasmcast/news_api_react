@@ -3,16 +3,11 @@ import './style.css'
 import MenuItem from './ManuItem';
 import Logo from './images/news.png'
 import Clock from './Clock';
+import SearchBySubject from './SearchBySubject';
 
 class NavBar extends Component{
-    
-    constructor(props){
-        super(props)
-    }
 
-    /**
-     * TODO: Implementar a ação do botão buscar e criar componentes separados para a navbar
-     */
+ 
     render(){
         return(
             <header>
@@ -25,7 +20,7 @@ class NavBar extends Component{
                                     <MenuItem key={index} name={item}/>
                                 )
                             })}
-                            <li><input/><button>Buscar</button></li>
+                            <SearchBySubject></SearchBySubject>
                         </ul>
                     </div>
                     <Clock/>

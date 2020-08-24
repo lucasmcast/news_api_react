@@ -17,9 +17,8 @@ class Index {
       case "/home":
         new NewsView(this.routes)
         break;
-      case "/":
+      default:
         new NewsView(this.routes)
-        break;
     }
   }
 }

@@ -18,44 +18,13 @@ export class NewsDAO {
   /**Get data from api News Api
    * @return Promise - Data of request
    */
-  getTopNewsApi() {
-    var url = this.baseUrl + "top-headlines?country=br&apiKey=" + this.apiKey;
-
-    // var url =
-    //   "https://newsapi.org/v2/everything?q=cars&apiKey=868df49846794dd5b7331f9f51758913";
-    return fetch(url);
+  async getDataAPI(endpoint) {
+    let url = endpoint.generateURL();
+    const response = await fetch(url)
+    const data = await response.json()
+    const news = data.articles
+    return news;
   }
-
-  /**
-   * Generate url for API
-   * @param {EndPoint} endPoint - Object for to build url 
-   */
-  generateURL(endPoint){
-    let url = this.baseUrl;
-  
-    let functionEndPoint = endPoint.getFunction();
-    let query = endPoint.getQuery();
-
-    url =+ `${functionEndPoint}?${query}&${this.apiKey}`
-    return url
-  }
-  
-  getCountryQueryNewsApi(country) {
-    var url =
-      this.baseUrl +
-      "top-headlines?country=" +
-      country +
-      "&apiKey=" +
-      this.apiKey;
-    return fetch(url);
-  }
-
-  getSubjectQueryNewsApi(subject) {
-    var url =
-      this.baseUrl + "everything?q=" + subject + "&apiKey=" + this.apiKey;
-    return fetch(url);
-  }
-
   /**Saves the news, passed as a parameter, in the database
    * @param {News} news - Class ViewModel
    * @see ViewModel
@@ -164,3 +133,15 @@ export class NewsDAO {
     });
   }
 }
+
+async function getDataAPI(endpoint) {
+  let url = endpoint.generateURL();
+  const response = await fetch(url)
+  const data = await response.json()
+  const news = data.articles
+  console.log(url)
+  return news;
+}
+
+
+export default getDataAPI;
